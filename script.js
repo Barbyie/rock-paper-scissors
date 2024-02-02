@@ -9,9 +9,9 @@ function getComputerChoice () {
   return computerPlay;
 };
 
-const computerInput = getComputerChoice();
+//const computerInput = getComputerChoice();
 
-let playerInput = (prompt("Rock, paper or scissors ? ")).toLowerCase();
+//let playerInput = (prompt("Rock, paper or scissors ? ")).toLowerCase();
 
 function playGame (playerInput, computerInput ) {
   let result = null;
@@ -19,15 +19,18 @@ function playGame (playerInput, computerInput ) {
   switch (playerInput) {
     case computerInput:
       result = "It is a Draw!";
+      console.log(result);
       whoWins = "draw"
       break;
     case "rock":
       if (computerInput === "paper") {
         result = "Computer plays paper, so he wins!";
+        console.log(result);
         whoWins = "computer";
         break;
       } else {
         result = "Computer plays scissors, so you win !";
+        console.log(result);
         whoWins = "player";
         break;
       };
@@ -36,10 +39,12 @@ function playGame (playerInput, computerInput ) {
     case "paper":
       if (computerInput === "rock") {
         result = "Computer plays rock, so you win !";
+        console.log(result);
         whoWins = "player";
         break;
       } else {
         result = "Computer plays scissors, so he wins!";
+        console.log(result);
         whoWins = "computer";
         break;
       };
@@ -47,15 +52,18 @@ function playGame (playerInput, computerInput ) {
     case "scissors":
       if (computerInput === "rock") {
         result = "Computer plays rock, so he wins!";
+        console.log(result);
         whoWins = "computer";
         break;
       } else {
         result = "Computer plays paper, so you win!";
+        console.log(result);
         whoWins = "player";
         break;
       };
     default:
       result = "Invalid input, refresh and try again."
+        console.log(result);
       whoWins = null;
       break;
   };
@@ -69,37 +77,42 @@ function round () {
   let playerPoints = 0;
   let computerPoints = 0;
 
-  for (let i = 0; i >= 4; i++) {
-    playGame();
+  for (let i = 0; i <= 4; i++) {
+    let playerInput = (prompt("Rock, paper or scissors ? ")).toLowerCase();
+    let computerInput = getComputerChoice();
     let values = playGame(playerInput, computerInput);
     if (values[1] === "draw") {
       counter += 1;
+      console.log(`Round: ${counter}`)
       console.log(`Player points: ${playerPoints}`);
       console.log(`Computer points: ${computerPoints}`);
     } else if (values[1] === "player") {
       counter += 1;
       playerPoints += 1;
+      console.log(`Round: ${counter}`)
       console.log(`Player points: ${playerPoints}`);
       console.log(`Computer points: ${computerPoints}`);
     } else if (values[1] === "computer") {
       counter += 1;
       computerPoints += 1;
+      console.log(`Round: ${counter}`)
       console.log(`Player points: ${playerPoints}`);
       console.log(`Computer points: ${computerPoints}`);
     } else {
       counter += 1;
+      console.log(`Round: ${counter}`)
       console.log(`Player points: ${playerPoints}`);
       console.log(`Computer points: ${computerPoints}`);
     };
   }; 
 
   if (playerPoints > computerPoints) {
-    console.log(`Player won with ${playerPoints}`);
+    console.log(`Congratulations! Player won with ${playerPoints} point`);
   } else if (computerPoints > playerPoints) {
-    console.log(`Computer won with ${computerPoints}`);
+    console.log(`Congratulations ! Computer won with ${computerPoints} point`);
   } else {
     console.log("Game ended with a draw.");
   };
 };
 
-console.log(round());
+let play = round();
