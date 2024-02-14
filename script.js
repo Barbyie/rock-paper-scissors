@@ -91,7 +91,7 @@ function round (playerInput) {
       console.log(`Player points: ${playerPoints}`);
       console.log(`Computer points: ${computerPoints}`);
     };
-  // }; 
+
   if (counter === 5) {
 
     if (playerPoints > computerPoints) {
@@ -101,6 +101,10 @@ function round (playerInput) {
     } else {
       console.log("Game ended with a draw.");
     };
+    // When the counter reaches 5, it will remove the event listeners since the game ended.
+    buttonRock.removeEventListener('click', triggerRock);
+    buttonPaper.removeEventListener('click', triggerPaper);
+    buttonScissors.removeEventListener('click', triggerScissors);
   };
 };
 
@@ -112,21 +116,30 @@ let counter = 0;
 let playerPoints = 0;
 let computerPoints = 0;
 
-const clickRock = buttonRock.addEventListener('click', () => {
+function triggerRock () {
   let buttonInput = "rock";
   counter += 1;
   round(buttonInput);
+};
 
-});
-
-const clickPaper = buttonPaper.addEventListener('click', () => {
+function triggerPaper() {
   let buttonInput = "paper";
   counter += 1;
   round(buttonInput);
-});
+};
 
-const clickScissors= buttonScissors.addEventListener('click', () => {
+function triggerScissors() {
   let buttonInput = "scissors";
   counter += 1;
   round(buttonInput);
-});
+};
+
+const clickRock = buttonRock.addEventListener('click', triggerRock);
+
+const clickPaper = buttonPaper.addEventListener('click', triggerPaper);
+
+const clickScissors= buttonScissors.addEventListener('click', triggerScissors);
+
+
+
+
