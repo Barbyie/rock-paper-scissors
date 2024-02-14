@@ -1,0 +1,52 @@
+body{
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100dvh;
+  flex-direction: column;
+}
+
+.container {
+  display: flex;
+  height: 15rem;
+  width: 30rem;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
+#rock{
+  height: 70px;
+  width: 140px;
+  font-size: 18px;
+  background: rgba(0, 255, 0, 0.8);
+}
+#rock:hover{
+  background: rgba(0, 162, 0, 0.8);
+}
+
+#paper{
+  height: 70px;
+  width: 140px;
+  font-size: 18px;
+  background: rgba(255, 0, 0, 0.8);
+}
+
+#paper:hover{
+  background: rgba(190, 0, 0, 0.8);
+}
+
+
+#scissors{
+  height: 70px;
+  width: 140px;
+  font-size: 18px;
+  background: rgba(255, 255, 0, 0.8);
+}
+
+#scissors:hover{
+  background: rgba(231, 231, 0, 0.8);
+}
