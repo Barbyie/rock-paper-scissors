@@ -9,10 +9,6 @@ function getComputerChoice () {
   return computerPlay;
 };
 
-//const computerInput = getComputerChoice();
-
-//let playerInput = (prompt("Rock, paper or scissors ? ")).toLowerCase();
-
 function playGame (playerInput, computerInput ) {
   let result = null;
   let whoWins = null;
@@ -72,47 +68,65 @@ function playGame (playerInput, computerInput ) {
 };
 
 
-function round () {
-  let counter = 0;
-  let playerPoints = 0;
-  let computerPoints = 0;
+function round (playerInput) {
 
-  for (let i = 0; i <= 4; i++) {
-    let playerInput = (prompt("Rock, paper or scissors ? ")).toLowerCase();
     let computerInput = getComputerChoice();
     let values = playGame(playerInput, computerInput);
     if (values[1] === "draw") {
-      counter += 1;
       console.log(`Round: ${counter}`)
       console.log(`Player points: ${playerPoints}`);
       console.log(`Computer points: ${computerPoints}`);
     } else if (values[1] === "player") {
-      counter += 1;
       playerPoints += 1;
       console.log(`Round: ${counter}`)
       console.log(`Player points: ${playerPoints}`);
       console.log(`Computer points: ${computerPoints}`);
     } else if (values[1] === "computer") {
-      counter += 1;
       computerPoints += 1;
       console.log(`Round: ${counter}`)
       console.log(`Player points: ${playerPoints}`);
       console.log(`Computer points: ${computerPoints}`);
     } else {
-      counter += 1;
       console.log(`Round: ${counter}`)
       console.log(`Player points: ${playerPoints}`);
       console.log(`Computer points: ${computerPoints}`);
     };
-  }; 
+  // }; 
+  if (counter === 5) {
 
-  if (playerPoints > computerPoints) {
-    console.log(`Congratulations! Player won with ${playerPoints} point`);
-  } else if (computerPoints > playerPoints) {
-    console.log(`Congratulations ! Computer won with ${computerPoints} point`);
-  } else {
-    console.log("Game ended with a draw.");
+    if (playerPoints > computerPoints) {
+      console.log(`Congratulations! Player won with ${playerPoints} point`);
+    } else if (computerPoints > playerPoints) {
+      console.log(`Congratulations ! Computer won with ${computerPoints} point`);
+    } else {
+      console.log("Game ended with a draw.");
+    };
   };
 };
 
-let play = round();
+const buttonRock = document.querySelector('#rock');
+const buttonPaper = document.querySelector('#paper');
+const buttonScissors = document.querySelector('#scissors');
+
+let counter = 0;
+let playerPoints = 0;
+let computerPoints = 0;
+
+const clickRock = buttonRock.addEventListener('click', () => {
+  let buttonInput = "rock";
+  counter += 1;
+  round(buttonInput);
+
+});
+
+const clickPaper = buttonPaper.addEventListener('click', () => {
+  let buttonInput = "paper";
+  counter += 1;
+  round(buttonInput);
+});
+
+const clickScissors= buttonScissors.addEventListener('click', () => {
+  let buttonInput = "scissors";
+  counter += 1;
+  round(buttonInput);
+});
