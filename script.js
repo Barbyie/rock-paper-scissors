@@ -15,21 +15,18 @@ function playGame (playerInput, computerInput ) {
   switch (playerInput) {
     case computerInput:
       result = "It is a Draw!";
-      console.log(result);
       resultsDiv.textContent = result;
       whoWins = "draw"
       break;
     case "rock":
       if (computerInput === "paper") {
-        result = "Computer plays paper, so he wins!";
+        result = "Computer plays paper, so he wins the round!";
         resultsDiv.textContent = result;
-        console.log(result);
         whoWins = "computer";
         break;
       } else {
-        result = "Computer plays scissors, so you win !";
+        result = "Computer plays scissors, so you win the round!";
         resultsDiv.textContent = result;
-        console.log(result);
         whoWins = "player";
         break;
       };
@@ -37,30 +34,26 @@ function playGame (playerInput, computerInput ) {
       // statement here.
     case "paper":
       if (computerInput === "rock") {
-        result = "Computer plays rock, so you win !";
+        result = "Computer plays rock, so you win the round!";
         resultsDiv.textContent = result;
-        console.log(result);
         whoWins = "player";
         break;
       } else {
-        result = "Computer plays scissors, so he wins!";
+        result = "Computer plays scissors, so he wins the round!";
         resultsDiv.textContent = result;
-        console.log(result);
         whoWins = "computer";
         break;
       };
       // the same applies here, scissors is the only variable possible, so we can use an else.
     case "scissors":
       if (computerInput === "rock") {
-        result = "Computer plays rock, so he wins!";
+        result = "Computer plays rock, so he wins the round!";
         resultsDiv.textContent = result;
-        console.log(result);
         whoWins = "computer";
         break;
       } else {
-        result = "Computer plays paper, so you win!";
+        result = "Computer plays paper, so you win the round!";
         resultsDiv.textContent = result;
-        console.log(result);
         whoWins = "player";
         break;
       };
@@ -75,36 +68,26 @@ function round (playerInput) {
     let computerInput = getComputerChoice();
     let values = playGame(playerInput, computerInput);
     if (values[1] === "draw") {
-      console.log(`Round: ${counter}`)
-      console.log(`Player points: ${playerPoints}`);
-      console.log(`Computer points: ${computerPoints}`);
+      playerDiv.textContent = `Player points: ${playerPoints}`;
+      computerDiv.textContent = `Computer points: ${computerPoints}`;
     } else if (values[1] === "player") {
       playerPoints += 1;
-      console.log(`Round: ${counter}`)
-      console.log(`Player points: ${playerPoints}`);
-      console.log(`Computer points: ${computerPoints}`);
+      playerDiv.textContent = `Player points: ${playerPoints}`;
+      computerDiv.textContent = `Computer points: ${computerPoints}`;
     } else if (values[1] === "computer") {
       computerPoints += 1;
-      console.log(`Round: ${counter}`)
-      console.log(`Player points: ${playerPoints}`);
-      console.log(`Computer points: ${computerPoints}`);
-    } else {
-      console.log(`Round: ${counter}`)
-      console.log(`Player points: ${playerPoints}`);
-      console.log(`Computer points: ${computerPoints}`);
+      playerDiv.textContent = `Player points: ${playerPoints}`;
+      computerDiv.textContent = `Computer points: ${computerPoints}`;
     };
 
   if (counter === 5) {
     resultsDiv.textContent = ""
 
     if (playerPoints > computerPoints) {
-      console.log(`Congratulations! Player won with ${playerPoints} point`);
       resultsDiv.textContent = `Congratulations! Player won with ${playerPoints} point`;
     } else if (computerPoints > playerPoints) {
-      console.log(`Congratulations ! Computer won with ${computerPoints} point`);
       resultsDiv.textContent = `Congratulations ! Computer won with ${computerPoints} point`;
     } else {
-      console.log("Game ended with a draw.");
       resultsDiv.textContent = "Game ended with a draw"
     };
     // When the counter reaches 5, it will remove the event listeners since the game ended.
@@ -119,6 +102,8 @@ const buttonPaper = document.querySelector('#paper');
 const buttonScissors = document.querySelector('#scissors');
 const counterDiv = document.querySelector('.counter')
 const resultsDiv = document.querySelector('.results');
+const playerDiv = document.querySelector('.player');
+const computerDiv = document.querySelector('.computer');
 
 let counter = 0;
 let playerPoints = 0;
