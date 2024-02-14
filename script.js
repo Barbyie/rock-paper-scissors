@@ -16,16 +16,19 @@ function playGame (playerInput, computerInput ) {
     case computerInput:
       result = "It is a Draw!";
       console.log(result);
+      resultsDiv.textContent = result;
       whoWins = "draw"
       break;
     case "rock":
       if (computerInput === "paper") {
         result = "Computer plays paper, so he wins!";
+        resultsDiv.textContent = result;
         console.log(result);
         whoWins = "computer";
         break;
       } else {
         result = "Computer plays scissors, so you win !";
+        resultsDiv.textContent = result;
         console.log(result);
         whoWins = "player";
         break;
@@ -35,11 +38,13 @@ function playGame (playerInput, computerInput ) {
     case "paper":
       if (computerInput === "rock") {
         result = "Computer plays rock, so you win !";
+        resultsDiv.textContent = result;
         console.log(result);
         whoWins = "player";
         break;
       } else {
         result = "Computer plays scissors, so he wins!";
+        resultsDiv.textContent = result;
         console.log(result);
         whoWins = "computer";
         break;
@@ -48,20 +53,17 @@ function playGame (playerInput, computerInput ) {
     case "scissors":
       if (computerInput === "rock") {
         result = "Computer plays rock, so he wins!";
+        resultsDiv.textContent = result;
         console.log(result);
         whoWins = "computer";
         break;
       } else {
         result = "Computer plays paper, so you win!";
+        resultsDiv.textContent = result;
         console.log(result);
         whoWins = "player";
         break;
       };
-    default:
-      result = "Invalid input, refresh and try again."
-        console.log(result);
-      whoWins = null;
-      break;
   };
 
   return [result, whoWins];
@@ -93,13 +95,17 @@ function round (playerInput) {
     };
 
   if (counter === 5) {
+    resultsDiv.textContent = ""
 
     if (playerPoints > computerPoints) {
       console.log(`Congratulations! Player won with ${playerPoints} point`);
+      resultsDiv.textContent = `Congratulations! Player won with ${playerPoints} point`;
     } else if (computerPoints > playerPoints) {
       console.log(`Congratulations ! Computer won with ${computerPoints} point`);
+      resultsDiv.textContent = `Congratulations ! Computer won with ${computerPoints} point`;
     } else {
       console.log("Game ended with a draw.");
+      resultsDiv.textContent = "Game ended with a draw"
     };
     // When the counter reaches 5, it will remove the event listeners since the game ended.
     buttonRock.removeEventListener('click', triggerRock);
@@ -111,6 +117,8 @@ function round (playerInput) {
 const buttonRock = document.querySelector('#rock');
 const buttonPaper = document.querySelector('#paper');
 const buttonScissors = document.querySelector('#scissors');
+const counterDiv = document.querySelector('.counter')
+const resultsDiv = document.querySelector('.results');
 
 let counter = 0;
 let playerPoints = 0;
@@ -119,18 +127,21 @@ let computerPoints = 0;
 function triggerRock () {
   let buttonInput = "rock";
   counter += 1;
+  counterDiv.textContent = `Round: ${counter}`;
   round(buttonInput);
 };
 
 function triggerPaper() {
   let buttonInput = "paper";
   counter += 1;
+  counterDiv.textContent = `Round: ${counter}`;
   round(buttonInput);
 };
 
 function triggerScissors() {
   let buttonInput = "scissors";
   counter += 1;
+  counterDiv.textContent = `Round: ${counter}`;
   round(buttonInput);
 };
 
