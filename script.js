@@ -135,7 +135,3 @@ const clickRock = buttonRock.addEventListener('click', triggerRock);
 const clickPaper = buttonPaper.addEventListener('click', triggerPaper);
 
 const clickScissors= buttonScissors.addEventListener('click', triggerScissors);
-
-
-
-
